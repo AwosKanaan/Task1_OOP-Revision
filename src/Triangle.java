@@ -4,7 +4,7 @@ public class Triangle extends Shape {
 	private double sideC;
 
 	public double getSideA() {
-		return sideA * 1;
+		return sideA;
 	}
 
 	public void setSideA(double sideA) {
@@ -41,7 +41,7 @@ public class Triangle extends Shape {
 
 	/**
 	 * Calculates the area of the triangle
-	 * This method calculates the area of the triangle based on sideA, SideB and SideC
+	 * This method calculates the area of the triangle based on attribute(s) (sideA, SideB, SideC)
 	 *
 	 * @return area
 	 */
@@ -51,6 +51,14 @@ public class Triangle extends Shape {
 		return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
 	}
 
+	/**
+	 * Calculates the area of the triangle based on params
+	 * This method calculates the area of the triangle based on parameter(s) (sideA, sideB, sideC)
+	 * @param sideA
+	 * @param sideB
+	 * @param sideC
+	 * @return area
+	 */
 	public double calculateArea(double sideA, double sideB, double sideC) {
 		double s = (sideA + sideB + sideC) / 2;
 		return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
@@ -58,9 +66,9 @@ public class Triangle extends Shape {
 
 	/**
 	 * Calculates the perimeter of the triangle
-	 * This method calculates the area of the triangle based on sideA, sideB, sideC
+	 * This method calculates the perimeter of the triangle based on attribute(s) (sideA, SideB, SideC)
 	 *
-	 * @return area
+	 * @return perimeter
 	 */
 	@Override
 	public double calculatePerimeter() {
