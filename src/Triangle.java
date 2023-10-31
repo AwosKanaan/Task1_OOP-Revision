@@ -4,7 +4,7 @@ public class Triangle extends Shape {
     private double sideC;
 
     public double getSideA() {
-        return sideA;
+        return sideA * 1;
     }
 
     public void setSideA(double sideA) {
