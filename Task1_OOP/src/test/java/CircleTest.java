@@ -4,34 +4,52 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CircleTest {
 
 	@Test
-	public void calculateArea_PositiveRadius_ReturnsCorrectArea() {
+	void setRadius_WhenEntersPositiveRadius_setCorrectRadius() {
 		Circle circle = new Circle();
-		circle.setRadius(5.0);
-		double area = circle.calculateArea();
-		assertEquals(Math.PI * 5.0 * 5.0, area, 0.001);
+		assertDoesNotThrow(() -> circle.setRadius(2));
 	}
 
 	@Test
-	public void calculatePerimeter_PositiveRadius_ReturnsCorrectPerimeter() {
+	void setRadius_WhenEntersNegativeRadius_throwsException() {
 		Circle circle = new Circle();
-		circle.setRadius(3.0);
-		double perimeter = circle.calculatePerimeter();
-		assertEquals(2.0 * Math.PI * 3.0, perimeter, 0.001);
+		assertThrows(IllegalArgumentException.class, () -> circle.setRadius(-1));
 	}
 
 	@Test
-	public void calculateArea_ZeroRadius_ThrowsIllegalArgumentException() {
+	void setRadius_WhenEntersZeroRadius_throwsException() {
 		Circle circle = new Circle();
-		assertThrows(IllegalArgumentException.class, () -> circle.setRadius(0.0));
+		assertThrows(IllegalArgumentException.class, () -> circle.setRadius(0));
 	}
 
 	@Test
-	public void toString_ReturnsExpectedString() {
+	void calculateArea_WhenEntersPositiveRadiusFromOverload_calculatesAreaCorrectly() {
 		Circle circle = new Circle();
-		circle.setRadius(4.0);
-		String result = circle.toString();
-		String expected = "Circle {radius = 4.0 Area = " + (Math.PI * 4.0 * 4.0) +
-				" Perimeter = " + (2.0 * Math.PI * 4.0) + '}';
-		assertEquals(expected, result);
+		assertEquals(28.274333882308138, circle.calculateArea(3));
+	}
+
+	@Test
+	void calculateArea_WhenEntersNegativeRadiusFromOverload_throwsException() {
+		Circle circle = new Circle();
+		assertThrows(IllegalArgumentException.class, () -> circle.calculateArea(-1));
+	}
+
+	@Test
+	void calculateArea_WhenEntersZeroRadiusFromOverload_throwsException() {
+		Circle circle = new Circle();
+		assertThrows(IllegalArgumentException.class, () -> circle.calculateArea(0));
+	}
+
+	@Test
+	void calculateArea_WhenEntersRadius_calculatesAreaCorrectly() {
+		Circle circle = new Circle();
+		circle.setRadius(3);
+		assertEquals(28.274333882308138, circle.calculateArea());
+	}
+
+	@Test
+	void calculatePerimeter_WhenEntersRadius_calculatesPerimeterCorrectly() {
+		Circle circle = new Circle();
+		circle.setRadius(2);
+		assertEquals(12.566370614359172, circle.calculatePerimeter());
 	}
 }
